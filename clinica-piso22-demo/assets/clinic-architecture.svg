@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 1180" role="img" aria-labelledby="t d">
+<title id="t">Arquitectura clínica conceptual</title><desc id="d">Composición abstracta de interior clínico contemporáneo en tonos neutros.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dfe3dc"/><stop offset=".45" stop-color="#f0eee8"/><stop offset="1" stop-color="#b6beb3"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f9faf8" stop-opacity=".86"/><stop offset="1" stop-color="#cbd2ca" stop-opacity=".42"/></linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="22"/></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .035 0"/></filter>
+</defs>
+<rect width="980" height="1180" fill="url(#bg)"/>
+<ellipse cx="760" cy="160" rx="310" ry="230" fill="#f8f6ef" opacity=".62" filter="url(#blur)"/>
+<path d="M0 730C175 641 307 604 484 629c204 29 276-73 496-211v762H0Z" fill="#d4d8d1"/>
+<path d="M0 855c202-48 369-50 540-4 185 49 281-5 440-90v419H0Z" fill="#b9c0b7"/>
+<rect x="105" y="98" width="645" height="652" rx="14" fill="url(#glass)" stroke="#ffffff" stroke-opacity=".55"/>
+<rect x="145" y="144" width="238" height="510" rx="8" fill="#f5f5f0" opacity=".78"/>
+<rect x="406" y="144" width="301" height="510" rx="8" fill="#d8ddd6" opacity=".53"/>
+<path d="M145 460h562" stroke="#a4ada2" stroke-opacity=".45"/>
+<path d="M383 144v510" stroke="#a4ada2" stroke-opacity=".45"/>
+<path d="M105 694h645" stroke="#9ea79d" stroke-opacity=".52"/>
+<path d="M85 784c75-72 176-108 301-108h192c82 0 147 50 147 113v117H85Z" fill="#f3f2ed"/>
+<path d="M116 803c69-57 160-85 272-85h172c70 0 124 40 124 90v29H116Z" fill="#e1e4de"/>
+<circle cx="798" cy="811" r="113" fill="#596157" opacity=".18"/>
+<circle cx="798" cy="811" r="62" fill="#f1efe8" opacity=".88"/>
+<path d="M793 873V640" stroke="#4f594f" stroke-width="7" stroke-linecap="round" opacity=".4"/>
+<path d="M798 699c-35-16-68-45-88-88 56 4 94 25 111 65M801 740c41-12 82-38 112-79-61-5-105 13-132 56" fill="none" stroke="#5f695e" stroke-width="8" stroke-linecap="round" opacity=".58"/>
+<rect width="980" height="1180" filter="url(#grain)" opacity=".8"/>
+</svg>
