@@ -1,7 +1,8 @@
 const header = document.querySelector('[data-header]');
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const nav = document.querySelector('[data-nav]');
-const toast = document.querySelector('[data-toast]');
+const demoDialog = document.querySelector('[data-demo-dialog]');
+let dialogTrigger;
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 10);
 updateHeader();
@@ -11,12 +12,33 @@ menuToggle?.addEventListener('click', () => {
   const open = menuToggle.getAttribute('aria-expanded') === 'true';
   menuToggle.setAttribute('aria-expanded', String(!open));
   nav?.classList.toggle('is-open', !open);
+  menuToggle.querySelector('.sr-only').textContent = open ? 'Abrir menú' : 'Cerrar menú';
 });
 
 nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   menuToggle?.setAttribute('aria-expanded', 'false');
   nav?.classList.remove('is-open');
+  const label = menuToggle?.querySelector('.sr-only');
+  if (label) label.textContent = 'Abrir menú';
 }));
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && nav?.classList.contains('is-open')) {
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    nav.classList.remove('is-open');
+    menuToggle.querySelector('.sr-only').textContent = 'Abrir menú';
+    menuToggle.focus();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    nav?.classList.remove('is-open');
+    const label = menuToggle?.querySelector('.sr-only');
+    if (label) label.textContent = 'Abrir menú';
+  }
+});
 
 const observer = 'IntersectionObserver' in window
   ? new IntersectionObserver((entries, obs) => {
@@ -34,15 +56,20 @@ document.querySelectorAll('.reveal').forEach(el => {
   else el.classList.add('revealed');
 });
 
-let toastTimer;
-document.querySelectorAll('[data-demo-link]').forEach(link => {
-  link.addEventListener('click', event => {
-    const href = link.getAttribute('href') || '';
-    if (href.includes('59800000000')) {
-      event.preventDefault();
-      toast?.classList.add('is-visible');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast?.classList.remove('is-visible'), 2600);
-    }
+document.querySelectorAll('[data-demo-action]').forEach(trigger => {
+  trigger.addEventListener('click', event => {
+    event.preventDefault();
+    dialogTrigger = trigger;
+    demoDialog?.showModal();
   });
 });
+
+demoDialog?.querySelectorAll('[data-dialog-close]').forEach(button => {
+  button.addEventListener('click', () => demoDialog.close());
+});
+
+demoDialog?.addEventListener('click', event => {
+  if (event.target === demoDialog) demoDialog.close();
+});
+
+demoDialog?.addEventListener('close', () => dialogTrigger?.focus());
